@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Websanova Char Counter</title>
+	
+	<script type="text/javascript" src="./inc/jquery.1.7.1.min.js"></script>
+	
+	<link rel="Stylesheet" type="text/css" href="./wChar.css" />
+	<script type="text/javascript" src="./wChar.js"></script>
+	
+</head>
+<body>
+	<br/><br/>
+	
+	<input id="wChar1" type="text" data-wChar-min="5" data-wChar-max="10"/>
+	<br/>
+	<textarea id="wChar2" data-wChar-min="10" data-wChar-max="100"></textarea>
+	
+	<script type="text/javascript">
+		$("#wChar1").wChar();
+		
+		$("#wChar2").wChar();
+	</script>
+	
+</body>
+</html>
