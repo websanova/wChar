@@ -55,9 +55,8 @@
 			elem
 			.keyup(function()
 			{
-				cc.setBestPosition(elem);
 				cc.showCount();
-				
+				cc.setBestPosition(elem);
 			})
 			
 			elem.data('_wChar', cc);
@@ -66,20 +65,22 @@
 
 	$.fn.wChar.defaultSettings =
 	{
-		position	: 'tr',			// should the tooltip follow the mouse
-		color		: 'black', 		// allow custom with #FFAACC
-		colorMin	: 'red',		// color of box when below min count
+		position	: 'tr',			// position of the counter
+		color		: 'black', 		// color of counter
+		colorMin	: 'red',		// color of counter when showing min required
+		message		: 'left',		// message to show with characters left
+		messageMin	: 'to go',		// message to show for min characters required
 		opacity		: 0.6,			// opacity level
 		min			: 0,			// minimum amount of characters
 		max			: 100,			// maximum amount of characters
-		fadeIn		: 500,			// time before tooltip appears in milliseconds
-		fadeOut		: 500,			// time before tooltip fades in milliseconds
-		delayIn		: 0,			// time before tooltip displays in milliseconds
-		delayOut	: 1500,			// time before tooltip begins to dissapear in milliseconds
+		fadeIn		: 500,			// time before counter appears in milliseconds
+		fadeOut		: 500,			// time before counter fades in milliseconds
+		delayIn		: 0,			// time before counter displays in milliseconds
+		delayOut	: 1500,			// time before counter begins to dissapear in milliseconds
 		width		: 50,			// define a set width for the counter
-		height		: 0,			// define a set height for the counter
-		offsetX		: 1,			// x offset of mouse position
-		offsetY		: 2,			// y offset of mouse position
+		height		: 0,			// define a set height for the counter (0 is auto)
+		offsetX		: 1,			// x offset of counter (negative if left of element)
+		offsetY		: 2,			// y offset of counter (negative if above element)
 		showMinCount: true			// show negative count for minimum required amonut
 	};
 
@@ -141,12 +142,12 @@
 			else if(this.settings.showMinCount && count < this.settings.min)
 			{
 				this.cc.removeClass(colorClass).addClass(colorMinClass);
-				this.content.html('-' + parseInt(this.settings.min - count));
+				this.content.html(parseInt(this.settings.min - count) + ' ' + this.settings.messageMin);
 			}
 			else
 			{
 				if(!this.cc.hasClass(colorClass))this.cc.removeClass(colorMinClass).addClass(colorClass);
-				this.content.html(this.settings.max - count);
+				this.content.html(this.settings.max - count + ' ' + this.settings.message);
 			}
 			
 			setTimeout(function(){ $this.cc.fadeIn($this.settings.fadeIn); }, this.settings.delayIn);

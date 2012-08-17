@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	
 	<title>Websanova Char Counter</title>
 	
 	<script type="text/javascript" src="./inc/jquery.1.7.1.min.js"></script>
@@ -12,14 +14,35 @@
 <body>
 	<br/><br/>
 	
+	<!-- example 1 -->
+	<form id="form1">
+		<input type="text" data-wChar-min="5" data-wChar-max="10"/>
+		<input type="text" data-wChar-min="5" data-wChar-max="10"/>
+		<textarea data-wChar-min="10" data-wChar-max="100"></textarea>
+	</form>
+	
+	<script type="text/javascript">
+		$("#form1").find('input, textarea').wChar();
+	</script>
+	
+	<br/><br/>
+	
+	<!-- example 2 -->
 	<input id="wChar1" type="text" data-wChar-min="5" data-wChar-max="10"/>
-	<br/>
-	<textarea id="wChar2" data-wChar-min="10" data-wChar-max="100"></textarea>
 	
 	<script type="text/javascript">
 		$("#wChar1").wChar();
+	</script>
+	
+	<br/><br/>
+	
+	<!-- example 3 -->
+	<textarea id="wChar2" data-wChar-min="10" data-wChar-max="100"></textarea>
+	
+	<script type="text/javascript">
+		var cc = $("#wChar2").wChar();
 		
-		$("#wChar2").wChar();
+		cc.wChar('max', 200);
 	</script>
 	
 </body>
