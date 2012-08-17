@@ -65,7 +65,7 @@
 
 	$.fn.wChar.defaultSettings =
 	{
-		position	: 'tr',			// position of the counter
+		position	: 'tr',			// position of the counter (tl,tc,tr,rt,rm,rb,bl,bc,br,lt,lm,lb)
 		color		: 'black', 		// color of counter
 		colorMin	: 'red',		// color of counter when showing min required
 		message		: 'left',		// message to show with characters left
