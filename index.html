@@ -12,7 +12,8 @@
 	
 </head>
 <body>
-	<br/><br/>
+
+	<h1>Websanova Char Counter</h1>
 	
 	<!-- example 1 -->
 	<form id="form1">
@@ -28,7 +29,7 @@
 	<br/><br/>
 	
 	<!-- example 2 -->
-	<input id="wChar1" type="text" data-wChar-min="5" data-wChar-max="10"/>
+	<input id="wChar1" type="text" data-wChar-min="5" data-wChar-max="20"/>
 	
 	<script type="text/javascript">
 		$("#wChar1").wChar();
@@ -42,7 +43,18 @@
 	<script type="text/javascript">
 		var cc = $("#wChar2").wChar();
 		
-		cc.wChar('max', 200);
+		console.log(cc);
+		console.log(cc.wChar('max'))
+
+		cc.wChar('max', 200).wChar('max', 150);
+	</script>
+
+	<script type="text/javascript">
+
+		console.log($('input').wChar('max'));
+		console.log($('input').wChar('max', 400));
+		console.log($('input').wChar('max'));
+
 	</script>
 	
 </body>

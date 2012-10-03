@@ -18,23 +18,27 @@
 		{
 			settings = option;
 		}
-		else if(typeof option == 'string')
+		else if(typeof option === 'string')
 		{
-			var data = this.data('_wChar');
+			var values = [];
 
-			if(data)
+			var elements = this.each(function()
 			{
-				if($.fn.wChar.defaultSettings[option] !== undefined)
+				var data = $(this).data('_wChar');
+
+				if(data)
 				{
-					if(settings !== undefined){
-						data.settings[option] = settings;
-						return true;
+					if($.fn.wChar.defaultSettings[option] !== undefined)
+					{
+						if(settings !== undefined) { data.settings[option] = settings; }
+						else { values.push(data.settings[option]); }
 					}
-					else return data.settings[option];
 				}
-				else return false;
-			}
-			else return false;
+			});
+
+			if(values.length === 1) { return values[0]; }
+			if(values.length > 0) { return values; }
+			else { return elements; }
 		}
 		
 		settings = $.extend({}, $.fn.wChar.defaultSettings, settings || {});

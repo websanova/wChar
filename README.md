@@ -3,7 +3,7 @@
 A jQuery character counter tooltip plugin that shows minimum required and remaining characters. [Check out the live demo](http://www.websanova.com/plugins/char/jquery).
 
 
-## Options
+## Settings
 
 Available options with notes, the values here are the defaults.
 
@@ -29,11 +29,23 @@ $('input, textarea').wChar({
 });
 ```
 
+Update settings on the fly:
+
+```javascript
+$('input').wChar('max', 300);
+```
+
+Retrieve settings, if more than one it will return an array otherwise just the value.
+
+```javascript
+console.log($('#elem').wChar('max'))            // 100
+console.log($('input').wChar('max'))            // ['100', '100', '100']
+```
+
 
 ## Examples
 
 Set for all input and textarea elements:
-
 
 ```html
 <form id="form1">
@@ -58,6 +70,7 @@ Set for specific element:
 ```
 
 Change settings on the fly:
+
 ```html
 <textarea id="wChar2" data-wChar-min="10" data-wChar-max="100"></textarea>
 
