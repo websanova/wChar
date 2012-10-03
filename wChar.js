@@ -7,7 +7,8 @@
  * @copyright       Copyright (c) 2012 Websanova.
  * @license         This wChar jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
- * @version         Version 1.0
+ * @github			http://github.com/websanova/wChar
+ * @version         Version 1.1.0
  *
  ******************************************/
 (function($)
