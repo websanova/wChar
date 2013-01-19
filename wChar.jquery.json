@@ -1,0 +1,38 @@
+{
+  "name": "wChar",
+  "title": "wChar jQuery Plugin",
+  "description": "A jQuery character counter plugin",
+  "keywords": [
+    "websanova",
+    "wChar",
+    "character",
+    "counter",
+    "char"
+  ],
+  "version": "v1.1.2",
+  "author": {
+    "name": "Websanova",
+    "email": "rob@websanova.com",
+    "url": "http://websanova.com"
+  },
+  "maintainers": [
+    {
+      "name": "Websanova",
+      "email": "rob@websanova.com",
+      "url": "http://websanova.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/websanova/wChar#license"
+    }
+  ],
+  "bugs": "https://github.com/websanova/wChar/issues",
+  "homepage": "http://websanova.com/plugins/char",
+  "docs": "https://github.com/websanova/wChar#wcharjs",
+  "download": "https://github.com/websanova/wChar/tags",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
