@@ -3,6 +3,8 @@
 A jQuery plugin for `textarea`, `text` and `password` inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.
 
 
+[http://wchar.websanova.com](View the demo here)
+
 ## Related Plugins
 
 * [wSelect](http://wselect.websanova.com) - Custom select boxes.
@@ -14,7 +16,7 @@ A jQuery plugin for `textarea`, `text` and `password` inputs to add a character 
 
 Available options with notes, the values here are the defaults.
 
-```
+```js
 $.fn.wChar.defaults = {
     theme: 'classic',         // set theme
     position: 'tr',           // position of character bubble (tl,tc,tr,rt,rm,rb,br,bc,bl,lb,lm,lt)
@@ -33,20 +35,20 @@ $.fn.wChar.defaults = {
 
 Include the following files:
 
-```
+```js
 <script type="text/javascript" src="./wChar.js"></script>
 <link rel="Stylesheet" type="text/css" href="./wChar.css" />
 ```
 
 You can then apply the plugin to any input text, password and textarea elements using the jQuery selector function:
 
-```
+```js
 $('input:text, input:password, textarea').wChar();
 ```
 
 Set the minlength and maxlength using data attributes `data-minlength` and `data-maxlength`.  Note that the minlength is optional and not required.  Also if you do not set a `maxlength` a default from the options will be used.
 
-```
+```html
 <input type="text" data-minlength="10" data-maxlength="100"/>
 ```
 
