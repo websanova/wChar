@@ -3,7 +3,7 @@
 A jQuery plugin for `textarea`, `text` and `password` inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.
 
 
-[http://wchar.websanova.com](View the demo here)
+[View the wChar demo here](http://wchar.websanova.com)
 
 ## Related Plugins
 
