@@ -1,61 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	
-	<title>Websanova Char Counter</title>
-	
-	<script type="text/javascript" src="./inc/jquery.1.8.2.min.js"></script>
-	
-	<link rel="Stylesheet" type="text/css" href="./wChar.css" />
-	<script type="text/javascript" src="./wChar.js"></script>
-	
+    <meta charset="utf-8">
+    <meta name="keywords" content="jquery, plugin, character counter, input, text, password, textarea" />
+    <meta name="description" content="A jQuery plugin for `textarea`, `text` and `password` inputs to add a character counter bubble that fades in while you type and fades out when you stop typing." />
+    <meta name = "owner" content = "Websanova" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./assets/img/favicon.ico" />
+    <title>Websanova :: wChar</title>
+    
+    <script type="text/javascript" src="./assets/jquery.1.9.1.min.js"></script>
+    <link rel="Stylesheet" type="text/css" href="./assets/demo.css" />
 </head>
 <body>
+    <div id="header">
+        <a id="header-logo" href="http://websanova.com" target="_blank"></a>
 
-	<h1>Websanova Char Counter</h1>
-	
-	<!-- example 1 -->
-	<form id="form1">
-		<input type="text" data-wChar-min="5" data-wChar-max="10"/>
-		<input type="text" data-wChar-min="5" data-wChar-max="10"/>
-		<textarea data-wChar-min="10" data-wChar-max="100"></textarea>
-	</form>
-	
-	<script type="text/javascript">
-		$("#form1").find('input, textarea').wChar();
-	</script>
-	
-	<br/><br/>
-	
-	<!-- example 2 -->
-	<input id="wChar1" type="text" data-wChar-min="5" data-wChar-max="20"/>
-	
-	<script type="text/javascript">
-		$("#wChar1").wChar();
-	</script>
-	
-	<br/><br/>
-	
-	<!-- example 3 -->
-	<textarea id="wChar2" data-wChar-min="10" data-wChar-max="100"></textarea>
-	
-	<script type="text/javascript">
-		var cc = $("#wChar2").wChar();
-		
-		console.log(cc);
-		console.log(cc.wChar('max'))
+        <div id="header-links">
+            <a href="http://websanova.com">Home</a> . 
+            <a href="http://websanova.com/plugins">Plugins</a> . 
+            <a href="http://websanova.com/extensions">Extensions</a>
+        </div>
+    </div>
 
-		cc.wChar('max', 200).wChar('max', 150);
-	</script>
+    <div id="holder">
 
-	<script type="text/javascript">
+        <h1 id="plugin-name">wChar.js</h1>
 
-		console.log($('input').wChar('max'));
-		console.log($('input').wChar('max', 400));
-		console.log($('input').wChar('max'));
+        <div id="content">
 
-	</script>
-	
+            <h2>About</h2>
+
+            <div id="about-blurb">
+                A jQuery plugin for <code>textarea</code> and <code>text</code> inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.
+            </div>
+
+            <ul>
+                <li><a href="https://github.com/websanova/wChar/tags">Download</a></li>
+                <li><a href="https://github.com/websanova/wChar#wcharjs">Documentation</a></li>
+            </ul>
+
+            <h2>Related Plugins</h2>
+
+            <ul>
+                <li><a href="http://wselect.websanova.com">wSelect</a> - Custom select boxes.</li>
+                <li><a href="http://winput.websanova.com">wInput</a> - Input plugin that handles backwards compatability for placeholders.</li>
+                <li><a href="http://wcheck.websanova.com">wCheck</a> - Radio and checkbox input plugin.</li>
+            </ul>
+
+            <h2>Demos</h2>
+
+            <div class="content-block">
+                <!-- plugin files -->
+                <script type="text/javascript" src="./wChar.js"></script>
+                <link rel="Stylesheet" type="text/css" href="./wChar.css" />
+
+                <style>
+                    label {
+                        display: inline-block;
+                        *display: inline; 
+                        zoom: 1;
+                        width: 80px;
+                        text-align: right;
+                        vertical-align: top;
+                    }
+                </style>
+
+                <label>Username:</label> <input type="text" data-minlength="4" data-maxlength="32"/><br/>
+                <label>Password:</label> <input type="password" data-minlength="8" data-maxlength="32"/><br/>
+                <label>Bio:</label> <textarea cols="30" rows="6" data-minlength="10" data-maxlength="200"></textarea>
+                
+                <script type="text/javascript">
+                    $('input:text, input:password, textarea').wChar();
+                </script>
+            </div>
+
+            <h2>Resources</h2>
+
+            <ul>
+                <li><a href="http://websanova.com/plugins">More jQuery plugins by Websanova</a></li>
+                <li><a href="http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins">The Ultimate Guide to Writing jQuery Plugins</a></li>
+                <li><a href="http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate">jQuery Plugin Development Boilerplate</a></li>
+            </ul>
+
+        </div><!-- content -->
+
+        <!-- social buttons -->
+        <div id="like-buttons">
+            <div class="button_github">
+                <iframe src="http://ghbtns.com/github-btn.html?user=websanova&repo=wChar&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="78" height="20"></iframe>
+            </div>
+            <div class="addthis_toolbox addthis_default_style">
+                <a class="addthis_button_tweet" addthis:url="http://github.com/websanova/wChar" addthis:title="wChar jQuery Plugin"></a>                    
+                <a class="addthis_button_facebook_like" addthis:url="http://github.com/websanova/wChar" addthis:title="wChar jQuery Plugin" ></a>
+                <a class="addthis_button_google_plusone" addthis:url="http://github.com/websanova/wChar" addthis:title="wChar jQuery Plugin"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="footer-icons">
+            <!--a id="youtube-icon" href="http://websanova.com/youtube" target="_blank"></a-->
+            <a id="stumbleupon-icon" href="http://websanova.com/stumbleupon" target="_blank"></a>
+            <a id="linkedin-icon" href="http://websanova.com/linkedin" target="_blank"></a>
+            <a id="facebook-icon" href="http://websanova.com/facebook" target="_blank"></a>
+            <a id="googleplus-icon" href="http://websanova.com/googleplus" target="_blank"></a>
+            <a id="twitter-icon" href="http://websanova.com/twitter" target="_blank"></a>
+            <a id="github-icon" href="http://websanova.com/github" target="_blank"></a>
+            <a id="rss-icon" href="http://websanova.com/feed" target="_blank"></a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        if(window.location.protocol === 'file:') $('#like-buttons').hide();
+
+        // keep social buttons on page
+        $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            if(scrollTop > 78) $('#like-buttons').css({top: scrollTop + 47});
+            else $('#like-buttons').css({top: 125});
+        }).trigger('scroll');
+    </script>
+
+    <!-- AddThis Button BEGIN -->
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504fdeb9241970a8"></script>
+    <!-- AddThis Button END -->
+
+    <!-- google analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12380236-11']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </body>
 </html>

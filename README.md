@@ -1,93 +1,65 @@
 # wChar.js
 
-A jQuery character counter tooltip plugin that shows minimum required and remaining characters. [Check out the live demo](http://www.websanova.com/plugins/char/jquery).
+A jQuery plugin for `textarea`, `text` and `password` inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.
+
+
+## Related Plugins
+
+* [wSelect](http://wselect.websanova.com) - Custom select boxes.
+* [wInput](http://winput.websanova.com) - Input plugin that handles backwards compatability for placeholders.
+* [wCheck](http://wcheck.websanova.com) - Radio and checkbox input plugin.
 
 
 ## Settings
 
 Available options with notes, the values here are the defaults.
 
-```javascript
-$('input, textarea').wChar({
-    position      : 'tr',       // position of the counter (tl,tc,tr,rt,rm,rb,bl,bc,br,lt,lm,lb)
-    color         : 'black',    // color of counter
-    colorMin      : 'red',      // color of counter when showing min required
-    message       : 'left',     // message to show with characters left
-    messageMin    : 'to go',    // message to show for min characters required
-    opacity       : 0.6,        // opacity level
-    min           : 0,          // minimum amount of characters
-    max           : 100,        // maximum amount of characters
-    fadeIn        : 500,        // time before counter appears in milliseconds
-    fadeOut       : 500,        // time before counter fades in milliseconds
-    delayIn       : 0,          // time before counter displays in milliseconds
-    delayOut      : 1500,       // time before counter begins to dissapear in milliseconds
-    width         : 50,         // define a set width for the counter
-    height        : 0,          // define a set height for the counter (0 is auto)
-    offsetX       : 1,          // x offset of counter (negative if left of element)
-    offsetY       : 2,          // y offset of counter (negative if above element)
-    showMinCount  : true        // show negative count for minimum required amonut
-});
 ```
-
-Update settings on the fly:
-
-```javascript
-$('input').wChar('max', 300);
+$.fn.wChar.defaults = {
+    theme: 'classic',         // set theme
+    position: 'tr',           // position of character bubble (tl,tc,tr,rt,rm,rb,br,bc,bl,lb,lm,lt)
+    opacity: 0.9,             // set opacity of counter bubble
+    showMinCount: true,       // display count down for min characters
+    min: 0,                   // min default
+    max: 100,                 // max default
+    fadeIn: 500,              // bubble fade in speed
+    fadeOut: 500,             // bubble fade out speed
+    delayIn: 0,               // delay after start typing before bubble fades in
+    delayOut: 2000            // delay after stop typing before bubble fades out
+};
 ```
-
-Retrieve settings, if more than one it will return an array otherwise just the value.
-
-```javascript
-console.log($('#elem').wChar('max'))            // 100
-console.log($('input').wChar('max'))            // ['100', '100', '100']
-```
-
 
 ## Examples
 
-Set for all input and textarea elements:
+Include the following files:
 
-```html
-<form id="form1">
-    <input type="text" data-wChar-min="5" data-wChar-max="10"/>
-    <input type="text" data-wChar-min="5" data-wChar-max="10"/>
-    <textarea data-wChar-min="10" data-wChar-max="100"></textarea>
-</form>
-
-<script type="text/javascript">
-    $("#form1").find("input, textarea").wChar();
-</script>
+```
+<script type="text/javascript" src="./wChar.js"></script>
+<link rel="Stylesheet" type="text/css" href="./wChar.css" />
 ```
 
-Set for specific element:
+You can then apply the plugin to any input text, password and textarea elements using the jQuery selector function:
 
-```html
-<input id="wChar1" type="text" data-wChar-min="5" data-wChar-max="10"/>
-    
-<script type="text/javascript">
-    $("#wChar1").wChar();
-</script>
+```
+$('input:text, input:password, textarea').wChar();
 ```
 
-Change settings on the fly:
+Set the minlength and maxlength using data attributes `data-minlength` and `data-maxlength`.  Note that the minlength is optional and not required.  Also if you do not set a `maxlength` a default from the options will be used.
 
-```html
-<textarea id="wChar2" data-wChar-min="10" data-wChar-max="100"></textarea>
-
-<script type="text/javascript">
-    var cc = $("#wChar2").wChar();
-    
-    cc.wChar("max", 200);
-</script>
 ```
+<input type="text" data-minlength="10" data-maxlength="100"/>
+```
+
 
 ## Resources
 
+* [More jQuery plugins by Websanova](http://websanova.com/plugins)
 * [jQuery Plugin Development Boilerplate](http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate)
 * [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins)
+
 
 ## License
 
 MIT licensed
 
-Copyright (C) 2011-2012 Websanova http://www.websanova.com
+Copyright (C) 2011-2013 Websanova http://www.websanova.com

@@ -1,0 +1,206 @@
+body, html {
+    font-family: verdana;
+    font-size: 12px;
+    line-height:20px;
+    color: #333;
+    background-color: #FAFAFA;
+    margin: 0;
+}
+
+#plugin-name {
+    margin: 0 30px 30px;
+    font-size: 30px;
+}
+
+#header {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    border-width: 0 0 1px;
+    color: #FFF;
+    font-size: 10px;
+    text-align: left;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+#header-logo {
+    position: absolute;
+    display: block;
+    width: 94px;
+    height: 20px;
+    left: 50px;
+    top: 10px;
+    background-image: url('./img/websanova-logo-small-full-black.png');
+}
+
+#header-links {
+    position: absolute;
+    right: 50px;
+}
+
+#header-links a {
+    color: #EEE;
+    font-weight: bold;
+}
+
+#footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    box-shadow: 10px 1px 10px rgba(0, 0, 0, 0.5);
+    border-width: 0 0 1px;
+    color: #FFF;
+    font-size: 10px;
+    text-align: left;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+#like-buttons {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    width: 100px;
+    overflow: hidden;
+}
+
+.addthis_default_style a, .button_github{
+    position: absolute;
+    left: 0px;
+    height: 25px;
+}
+
+.addthis_toolbox {
+    width: 100px;
+    height:100px;
+}
+
+a.addthis_button_tweet {  
+    top: 25px;
+}
+
+.button_github {
+    top: 0px;
+    left: 2px;
+}
+
+a.addthis_button_facebook_like {
+    top: 50px;
+}
+
+a.addthis_button_google_plusone {
+    height: 22px;
+    left: 1px;
+    top: 75px;
+}
+
+#footer-icons {
+    position: absolute;
+    right: 50px;
+    top: 0px;
+}
+
+#stumbleupon-icon,
+#googleplus-icon,
+#linkedin-icon,
+#youtube-icon,
+#facebook-icon,
+#twitter-icon,
+#github-icon,
+#rss-icon {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 17px;
+    height: 17px;
+    margin: 12px 0 0 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#linkedin-icon {
+    width: 18px;
+    background-image: url('./img/linkedin-icon.png');
+}
+
+#stumbleupon-icon {
+    background-image: url('./img/stumbleupon-icon.png');
+}
+
+#googleplus-icon {
+    background-image: url('./img/googleplus-icon.png');
+}
+
+#youtube-icon {
+    width: 17px;
+    height: 18px;
+    background-image: url('./img/youtube-icon.png');
+}
+
+#facebook-icon {
+    width: 8px;
+    background-image: url('./img/facebook-icon.png');
+}
+
+#twitter-icon {
+    width: 20px;
+    background-image: url('./img/twitter-icon.png');
+}
+
+#github-icon {
+    width: 20px;
+    background-image: url('./img/github-icon.png');
+}
+
+#rss-icon {
+    background-image: url('./img/rss-icon.png');
+}
+
+#holder {
+    position: relative;
+    padding: 70px 115px 70px 20px;
+    width:740px;
+    margin: 0 auto;
+}
+
+#content {
+    position: relative;
+    background: #FEFEFE;
+    border: solid 1px #CACACA;
+    border-radius: 10px;
+    padding: 10px 30px 30px 30px;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.1);
+}
+
+.content-block {
+    margin-left: 25px;
+}
+
+a {
+    color: #3399FF;
+    text-decoration: none;
+}
+
+code {
+    padding: 1px 3px;
+    color: #D14;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+    border-radius: 5px;
+}

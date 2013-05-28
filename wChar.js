@@ -5,262 +5,163 @@
  *
  * @author          Websanova
  * @copyright       Copyright (c) 2012 Websanova.
- * @license         This wChar jQuery plug-in is dual licensed under the MIT and GPL licenses.
+ * @license         This websanova wChar jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
- * @github			http://github.com/websanova/wChar
- * @version         Version 1.1.3
+ * @github          http://github.com/websanova/wChar
+ * @version         Version 2.0.0
  *
  ******************************************/
-(function($)
-{
-	$.fn.wChar = function(option, settings)
-	{
-		if(typeof option === 'object')
-		{
-			settings = option;
-		}
-		else if(typeof option === 'string')
-		{
-			var values = [];
 
-			var elements = this.each(function()
-			{
-				var data = $(this).data('_wChar');
+(function($) {
+    
+    function Char(el, options) {
+        this.$el = $(el);
+        this.options = options;
+        this.timeout = null;
 
-				if(data)
-				{
-					if($.fn.wChar.defaultSettings[option] !== undefined)
-					{
-						if(settings !== undefined) { data.settings[option] = settings; }
-						else { values.push(data.settings[option]); }
-					}
-				}
-			});
+        this.generate();
+    };
+    
+    Char.prototype = {
+        generate: function() {
+            if (!this.$char) {
+                var _self = this;
 
-			if(values.length === 1) { return values[0]; }
-			if(values.length > 0) { return values; }
-			else { return elements; }
-		}
-		
-		settings = $.extend({}, $.fn.wChar.defaultSettings, settings || {});
+                this.$container = $('<div style="position:relative; display:inline-block; *display:inline; zoom:1;"></div>');
+                this.$el.after(this.$container).appendTo(this.$container);
 
-		return this.each(function()
-		{
-			var elem = $(this);
-			
-			var $settings = jQuery.extend(true, {}, settings);
-			$settings.min =  elem.attr('data-wChar-min') || settings.min;
-			$settings.max =  elem.attr('data-wChar-max') || settings.max;
-			
-			var cc = new CharCounter($settings, elem);
+                this.$char = $('<div class="wChar">123</div>').hide();
+                this.$char.appendTo(this.$container);
+                this.setTheme(this.options.theme);
+                this.setOpacity(this.options.opacity);
+                this.setPosition(this.options.position);
 
-			cc.generate();
-			cc.appendToBody();
+                this.$el.keyup(function(e){ _self.onKeyup(e); });
+            }
 
-			elem
-			.keyup(function()
-			{
-				cc.showCount();
-				cc.setBestPosition(elem);
-			})
-			
-			elem.data('_wChar', cc);
-		});
-	}
+            return this.$char;
+        },
 
-	$.fn.wChar.defaultSettings =
-	{
-		position	: 'tr',			// position of the counter (tl,tc,tr,rt,rm,rb,bl,bc,br,lt,lm,lb)
-		color		: 'black', 		// color of counter
-		colorMin	: 'red',		// color of counter when showing min required
-		message		: 'left',		// message to show with characters left
-		messageMin	: 'to go',		// message to show for min characters required
-		opacity		: 0.6,			// opacity level
-		min			: 0,			// minimum amount of characters
-		max			: 100,			// maximum amount of characters
-		fadeIn		: 500,			// time before counter appears in milliseconds
-		fadeOut		: 500,			// time before counter fades in milliseconds
-		delayIn		: 0,			// time before counter displays in milliseconds
-		delayOut	: 1500,			// time before counter begins to dissapear in milliseconds
-		width		: 50,			// define a set width for the counter
-		height		: 0,			// define a set height for the counter (0 is auto)
-		offsetX		: 1,			// x offset of counter (negative if left of element)
-		offsetY		: 2,			// y offset of counter (negative if above element)
-		showMinCount: true			// show negative count for minimum required amonut
-	};
+        onKeyup: function(e) {
+            var length = this.$el.val().length,
+                charsLeft = this.options.max - length;
 
-	/**
-	 * Tooltip class definition
-	 */
-	function CharCounter(settings, elem)
-	{
-		this.cc = null;
-		this.content = null;
+            this.setTimeout();
 
-		this.settings = settings;
-		this.hoverOffTimer = null;
-		this.elem = elem;
-		
-		return this;
-	}
-	
-	CharCounter.prototype = 
-	{
-		generate: function()
-		{
-			if(this.cc) return this.cc;
-						
-			this.content = $('<div class="_wChar_content"></div>').css({width: this.settings.width || '', height: this.settings.height || ''});
-			
-			var bg = $('<div class="_wChar_bg"></div>').css({opacity: this.settings.opacity});
-			
-			this.cc =
-			$('<div class="_wChar_holder"></div>')
-			.append(
-				$('<div class="_wChar_outer"></div>')
-				.append(
-					$('<div class="_wChar_inner"></div>')
-					.append( bg )
-					.append( this.content )
-				)
-			)
-			.addClass('_wChar_' + this.settings.color)
+            if (charsLeft < 0) {
+                this.$el.val(this.$el.val().substring(0, this.options.max));
+                charsLeft = 0;
+            }
 
-			return this.cc;
-		},
-		
-		appendToBody: function()
-		{
-			$('body').append(this.cc);
-		},
-		
-		showCount: function()
-		{
-			var $this = this;
-			
-			var count = this.elem.val().length;
-			
-			var colorClass = '_wChar_' + this.settings.color;
-			var colorMinClass = '_wChar_' + this.settings.colorMin;
-			
-			if(count > this.settings.max)this.elem.val(this.elem.val().substring(0, this.settings.max));
-			else if(this.settings.showMinCount && count < this.settings.min)
-			{
-				this.cc.removeClass(colorClass).addClass(colorMinClass);
-				this.content.html(parseInt(this.settings.min - count) + ' ' + this.settings.messageMin);
-			}
-			else
-			{
-				if(!this.cc.hasClass(colorClass))this.cc.removeClass(colorMinClass).addClass(colorClass);
-				this.content.html(this.settings.max - count + ' ' + this.settings.message);
-			}
-			
-			setTimeout(function(){ $this.cc.fadeIn($this.settings.fadeIn); }, this.settings.delayIn);
-			
-			clearTimeout(this.hoverOffTimer);
-			this.hoverOffTimer = setTimeout(function(){ $this.cc.fadeOut($this.settings.fadeOut); }, this.settings.delayOut);
-		},
+            if (this.options.showMinCount && this.options.min > 0 && length < this.options.min) {
+                this.$char.html(length);
+                this.$char.addClass('wChar-min');
+            }
+            else {
+                if (charsLeft <= 0) { this.$char.addClass('wChar-min'); }
+                else { this.$char.removeClass('wChar-min'); }
+                this.$char.html(charsLeft);
+            }
+        },
 
-		isOverflow: function(left, top)
-		{
-			var rightWall = (left + this.settings.offsetX + this.cc.outerWidth()) - ($(window).scrollLeft() + $(window).width());
-			var leftWall = left - $(window).scrollLeft();
-			var bottomWall = (top + this.settings.offsetY + this.cc.outerHeight()) - ($(window).scrollTop() + $(window).height());
-			var topWall = top - $(window).scrollTop();
+        setTimeout: function() {
+            var _self = this;
+            setTimeout(function(){ _self.$char.fadeIn(_self.options.fadeIn); }, _self.options.delayIn);
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(function(){ _self.$char.fadeOut(_self.options.fadeOut); }, _self.options.delayOut);
+        },
 
-			overflowTotal = 0;
-			
-			if(rightWall > 0) overflowTotal += rightWall;
-			if(leftWall < 0) overflowTotal += Math.abs(leftWall);
-			if(bottomWall > 0) overflowTotal += bottomWall;
-			if(topWall < 0) overflowTotal += Math.abs(topWall)
+        setTheme: function(theme) {
+            this.$char.attr('class', this.$char.attr('class').replace(/wChar-theme-.+\s|wChar-theme-.+$/, ''));
+            this.$char.addClass('wChar-theme-' + theme);
+        },
 
-			return overflowTotal;
-		},
-		
-		getOffset: function(elem, position)
-		{
-			var first = position.substring(0, 1);
-			var second = position.substring(1, 2);
-			 
-			var elem_offset = elem.offset();
-			var elem_left = elem_offset.left;
-			var elem_top = elem_offset.top;
-			
-			var elem_width = elem.outerWidth();
-			var elem_height = elem.outerHeight();
-			
-			var window_width = $(window).width();
-			var window_height = $(window).height();
-			
-			var tooltip_width = this.cc.outerWidth();
-			var tooltip_height = this.cc.outerHeight();
-			
-			var left = null;
-			var top = null;
-			
-			if(!(first == 'm' && second == 'm'))//manual set
-			{
-				//based on position
-				if(first == 't') top = elem_top - tooltip_height - this.settings.offsetY;
-				else if(first == 'b') top = elem_top + elem_height + this.settings.offsetY;
-				else if(second == 't') top = elem_top + this.settings.offsetY;
-				else if(second == 'b') top = elem_top + elem_height - tooltip_height - this.settings.offsetY;
-				else if(second == 'm') top = elem_top - (tooltip_height - elem_height)/2;
-				
-				//get left position
-				if(first == 'l') left = elem_left - tooltip_width - this.settings.offsetX;
-				else if(first == 'r') left = elem_left + elem_width + this.settings.offsetX;
-				else if(second == 'l') left = elem_left + this.settings.offsetX;
-				else if(second == 'r') left = elem_left - (tooltip_width - elem_width) - this.settings.offsetX;
-				else if(second == 'c') left = elem_left - (tooltip_width - elem_width)/2;
-			}
-			
-			return {left: left, top: top};
-		},
+        setOpacity: function(opacity) {
+            this.$char.css('opacity', opacity);
+        },
 
-		setBestPosition: function(elem)
-		{
-			var positions_best_fit_map = {
-				'lt': ['lt', 'lm', 'lb', 'rt', 'rm', 'rb', 'tl', 'tc', 'tr', 'bl', 'bc', 'br', 'mm'],
-				'lm': ['lm', 'lt', 'lb', 'rm', 'rt', 'rb', 'tl', 'tc', 'tr', 'bl', 'bc', 'br', 'mm'],
-				'lb': ['lb', 'lm', 'lt', 'rb', 'rm', 'rt', 'bl', 'bc', 'br', 'tl', 'tc', 'tr', 'mm'],
-				'rt': ['rt', 'rm', 'rb', 'lt', 'lm', 'lb', 'tr', 'tc', 'tl', 'br', 'bc', 'bl', 'mm'],
-				'rm': ['rm', 'rt', 'rb', 'lm', 'lt', 'lb', 'tr', 'tc', 'tl', 'br', 'bc', 'bl', 'mm'],
-				'rb': ['rb', 'rm', 'rt', 'lb', 'lm', 'lt', 'br', 'bc', 'bl', 'tr', 'tc', 'tl', 'mm'],
-				'tl': ['tl', 'tc', 'tr', 'bl', 'bc', 'br', 'lt', 'lm', 'lb', 'rt', 'rm', 'rb', 'mm'],
-				'tc': ['tc', 'tl', 'tr', 'bc', 'bl', 'br', 'lt', 'lm', 'lb', 'rt', 'rm', 'rb', 'mm'],
-				'tr': ['tr', 'tc', 'tl', 'br', 'bc', 'bl', 'rt', 'rm', 'rb', 'lt', 'lm', 'lb', 'mm'],
-				'bl': ['bl', 'bc', 'br', 'tl', 'tc', 'tr', 'lb', 'lm', 'lt', 'rb', 'rm', 'rt', 'mm'],
-				'bc': ['bc', 'bl', 'br', 'tc', 'tl', 'tr', 'lb', 'lm', 'lt', 'rb', 'rm', 'rt', 'mm'],
-				'br': ['br', 'bc', 'bl', 'tr', 'tc', 'tl', 'rb', 'rm', 'rt', 'lb', 'lm', 'lt', 'mm']
-			};
-			
-			var overflowTotal = null;
-			var overflowPositionMin = null;
-			var overflowTotalMin = null;
-			
-			var offset = null;
-			var positions = positions_best_fit_map[this.settings.position];
-			
-			for(index in positions)
-			{
-				offset = this.getOffset(elem, positions[index]);
-				overflowTotal = this.isOverflow(offset.left, offset.top);
-				
-				if(overflowTotalMin == null || overflowTotal < overflowTotalMin)
-				{
-				 	overflowPositionMin = positions[index];
-					overflowTotalMin = overflowTotal;
-				}
-				
-				if(!overflowTotal) break;
-			}
-			
-			//manual override
-			if(offset.left == null && offset.top == null) offset = this.getOffset(elem, overflowPositionMin);
-			
-			this.cc.css({left: offset.left, top: offset.top});
-		}
-	}
+        setPosition: function(position) {
+            var width = this.$char.outerWidth(true),
+                height = this.$char.outerHeight(true),
+                center = (this.$el.outerWidth()/2) - (width/2),
+                middle = (this.$el.outerHeight()/2) - (height/2);
+
+            this.$char.css({left:'', right:'', top:'', bottom:''});
+
+            switch (position) {
+                case 'tl': this.$char.css({left:0, top:-1*height}); break;
+                case 'tc': this.$char.css({left:center, top:-1*height}); break;
+                case 'tr': this.$char.css({right:0, top:-1*height}); break;
+                case 'rt': this.$char.css({right:-1*width, top:0}); break;
+                case 'rm': this.$char.css({right:-1*width, top:middle}); break;
+                case 'rb': this.$char.css({right:-1*width, bottom:0}); break;
+                case 'br': this.$char.css({right:0, bottom:-1*height}); break;
+                case 'bc': this.$char.css({left:center, bottom:-1*height}); break;
+                case 'bl': this.$char.css({left:0, bottom:-1*height}); break;
+                case 'lb': this.$char.css({left:-1*width, bottom:0}); break;
+                case 'lm': this.$char.css({left:-1*width, top:middle}); break;
+                case 'lt': this.$char.css({left:-1*width, top:0}); break;
+            }
+        }
+    };
+
+    $.fn.wChar = function(options, value) {
+        if (typeof options === 'string') {
+            var values = [];
+            var elements = this.each(function() {
+                var wChar = $(this).data('wChar');
+
+                if (wChar) {
+                    var func = (value ? 'set' : 'get') + options.charAt(0).toUpperCase() + options.substring(1).toLowerCase();
+
+                    if (wChar[options]) {
+                        wChar[options].apply(wChar, [value]);
+                    } else if (value) {
+                        if (wChar[func]) { wChar[func].apply(wChar, [value]); }
+                        if (wChar.options[options]) { wChar.options[options] = value; }
+                    } else {
+                        if(wChar[func]) { values.push(wChar[func].apply(wChar, [value])); }
+                        else if (wChar.options[options]) { values.push(wChar.options[options]); }
+                        else { values.push(null); }
+                    }
+                }
+            });
+
+            if (values.length === 1) { return values[0]; }
+            else if (values.length > 0) { return values; }
+            else { return elements; }
+        }
+
+        options = $.extend({}, $.fn.wChar.defaults, options);
+
+        function get(el) {
+            var wChar = $.data(el, 'wChar');
+            if (!wChar) {
+                var _options = jQuery.extend(true, {}, options);
+                _options.min = $(el).attr('data-minlength') || _options.min;
+                _options.max = $(el).attr('data-maxlength') || _options.max;
+
+                wChar = new Char(el, _options);
+                $.data(el, 'wChar', wChar);
+            }
+
+            return wChar;
+        }
+
+        return this.each(function() { get(this); });
+    };
+    
+    $.fn.wChar.defaults = {
+        theme: 'classic',         // set theme
+        position: 'tr',           // position of character bubble (tl,tc,tr,rt,rm,rb,br,bc,bl,lb,lm,lt)
+        opacity: 0.9,             // set opacity of counter bubble
+        showMinCount: true,       // display count down for min characters
+        min: 0,                   // min default
+        max: 100,                 // max default
+        fadeIn: 500,              // bubble fade in speed
+        fadeOut: 500,             // bubble fade out speed
+        delayIn: 0,               // delay after start typing before bubble fades in
+        delayOut: 2000            // delay after stop typing before bubble fades out
+    };
+    
 })(jQuery);
