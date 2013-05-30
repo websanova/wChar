@@ -40,7 +40,7 @@ Include the following files:
 <link rel="Stylesheet" type="text/css" href="./wChar.css" />
 ```
 
-You can then apply the plugin to any input text, password and textarea elements using the jQuery selector function:
+You can then apply the plugin to any input `text`, `password` and `textarea` elements using the jQuery selector function:
 
 ```js
 $('input:text, input:password, textarea').wChar();
