@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
     <meta name="keywords" content="jquery, plugin, character counter, input, text, password, textarea" />
     <meta name="description" content="A jQuery plugin for `textarea`, `text` and `password` inputs to add a character counter bubble that fades in while you type and fades out when you stop typing." />
     <meta name = "owner" content = "Websanova" />
@@ -12,92 +13,86 @@
     <link rel="Stylesheet" type="text/css" href="./assets/demo.css" />
 </head>
 <body>
-    <div id="header">
+    <header>
         <a id="header-logo" href="http://websanova.com" target="_blank"></a>
 
         <div id="header-links">
-            <a href="http://websanova.com">Home</a> . 
-            <a href="http://websanova.com/plugins">Plugins</a> . 
+            <a href="http://websanova.com">Home</a>
+            <a href="http://websanova.com/plugins">Plugins</a>
             <a href="http://websanova.com/extensions">Extensions</a>
         </div>
-    </div>
+    </header>
 
-    <div id="holder">
-
+    <div id="content">
         <h1 id="plugin-name">wChar.js</h1>
 
-        <div id="content">
-
-            <h2>About</h2>
-
-            <div id="about-blurb">
-                A jQuery plugin for <code>textarea</code> and <code>text</code> inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.
-            </div>
-
-            <ul>
-                <li><a href="https://github.com/websanova/wChar/tags">Download</a></li>
-                <li><a href="https://github.com/websanova/wChar#wcharjs">Documentation</a></li>
-            </ul>
-
-            <h2>Related Plugins</h2>
-
-            <ul>
-                <li><a href="http://wselect.websanova.com">wSelect</a> - Custom select boxes.</li>
-                <li><a href="http://winput.websanova.com">wInput</a> - Input plugin that handles backwards compatability for placeholders.</li>
-                <li><a href="http://wcheck.websanova.com">wCheck</a> - Radio and checkbox input plugin.</li>
-            </ul>
-
-            <h2>Demos</h2>
-
-            <div class="content-block">
-                <!-- plugin files -->
-                <script type="text/javascript" src="./wChar.js"></script>
-                <link rel="Stylesheet" type="text/css" href="./wChar.css" />
-
-                <style>
-                    label {
-                        display: inline-block;
-                        *display: inline; 
-                        zoom: 1;
-                        width: 80px;
-                        text-align: right;
-                        vertical-align: top;
-                    }
-                </style>
-
-                <label>Username:</label> <input type="text" data-minlength="4" data-maxlength="32"/><br/>
-                <label>Password:</label> <input type="password" data-minlength="8" data-maxlength="32"/><br/>
-                <label>Bio:</label> <textarea cols="30" rows="6" data-minlength="10" data-maxlength="200"></textarea>
-                
-                <script type="text/javascript">
-                    $('input:text, input:password, textarea').wChar();
-                </script>
-            </div>
-
-            <h2>Resources</h2>
-
-            <ul>
-                <li><a href="http://websanova.com/plugins">More jQuery plugins by Websanova</a></li>
-                <li><a href="http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins">The Ultimate Guide to Writing jQuery Plugins</a></li>
-                <li><a href="http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate">jQuery Plugin Development Boilerplate</a></li>
-            </ul>
-
-        </div><!-- content -->
-
-        <!-- social buttons -->
-        <div id="like-buttons">
-            <div class="button_github">
+        <div id="addthis-toolbox" class="addthis_toolbox addthis_default_style">
+            <a id="github-button" title="GitHub">
                 <iframe src="http://ghbtns.com/github-btn.html?user=websanova&repo=wChar&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="78" height="20"></iframe>
-            </div>
-            <div class="addthis_toolbox addthis_default_style">
-                <a class="addthis_button_tweet" addthis:url="http://github.com/websanova/wChar" addthis:title="wChar jQuery Plugin"></a>                    
-                <a class="addthis_button_facebook_like" addthis:url="http://github.com/websanova/wChar" addthis:title="wChar jQuery Plugin" ></a>
-                <a class="addthis_button_google_plusone" addthis:url="http://github.com/websanova/wChar" addthis:title="wChar jQuery Plugin"></a>
-            </div>
+            </a>
+            <a class="addthis_button_facebook" addthis:url="http://wchar.websanova.com" addthis:title="Websanova wChar Demo"></a>
+            <a class="addthis_button_twitter" addthis:url="http://wchar.websanova.com" addthis:title="Websanova wChar Demo"></a>
+            <a class="addthis_button_google_plusone_share" addthis:url="http://wchar.websanova.com" addthis:title="Websanova wChar Demo"></a>
+            <a class="addthis_button_reddit" addthis:url="http://wchar.websanova.com" addthis:title="Websanova wChar Demo"></a>
+            <a class="addthis_button_dzone" addthis:url="http://wchar.websanova.com" addthis:title="Websanova wChar Demo"></a>
+            <a class="addthis_button_compact" addthis:url="http://wchar.websanova.com" addthis:title="Websanova wChar Demo"></a>
         </div>
+
+        <h2>About</h2>
+
+        <div class="content-box">
+            A jQuery plugin for <code>textarea</code> and <code>text</code> inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.
+        </div>
+
+        <ul>
+            <li><a href="https://github.com/websanova/wChar/tags">Download</a></li>
+            <li><a href="https://github.com/websanova/wChar#wcharjs">Documentation</a></li>
+        </ul>
+
+        <h2>Related Plugins</h2>
+
+        <ul>
+            <li><a href="http://wselect.websanova.com">wSelect</a> - Custom select boxes.</li>
+            <li><a href="http://winput.websanova.com">wInput</a> - Input plugin that handles backwards compatability for placeholders.</li>
+            <li><a href="http://wcheck.websanova.com">wCheck</a> - Radio and checkbox input plugin.</li>
+        </ul>
+
+        <h2>Demos</h2>
+
+        <script type="text/javascript" src="./wChar.js"></script>
+        <link rel="Stylesheet" type="text/css" href="./wChar.css" />
+
+        <div class="content-box">
+            <label>Username:</label> <input type="text" data-minlength="4" data-maxlength="32" style="width:100px;"/><br/>
+            <label>Bio:</label> <textarea cols="30" rows="6" data-minlength="10" data-maxlength="200" style="width:165px;"></textarea>
+        </div>
+
+        <script type="text/javascript">
+            $('input:text, input:password, textarea').wChar({message: 'left', messageMin: 'to go'});
+        </script>
+
+        <style>
+            label {
+                display: inline-block;
+                *display: inline; 
+                zoom: 1;
+                width: 80px;
+                text-align: right;
+                vertical-align: top;
+            }
+        </style>
+
+        <h2>Resources</h2>
+
+        <ul>
+            <li><a href="http://websanova.com/plugins">More jQuery plugins by Websanova</a></li>
+            <li><a href="http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins">The Ultimate Guide to Writing jQuery Plugins</a></li>
+            <li><a href="http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate">jQuery Plugin Development Boilerplate</a></li>
+        </ul>
+
     </div>
 
-    <div id="footer">
+    <footer>
         <div id="footer-icons">
             <!--a id="youtube-icon" href="http://websanova.com/youtube" target="_blank"></a-->
             <a id="stumbleupon-icon" href="http://websanova.com/stumbleupon" target="_blank"></a>
@@ -108,17 +103,10 @@
             <a id="github-icon" href="http://websanova.com/github" target="_blank"></a>
             <a id="rss-icon" href="http://websanova.com/feed" target="_blank"></a>
         </div>
-    </div>
+    </footer>
 
     <script type="text/javascript">
-        if(window.location.protocol === 'file:') $('#like-buttons').hide();
-
-        // keep social buttons on page
-        $(window).scroll(function(){
-            var scrollTop = $(window).scrollTop();
-            if(scrollTop > 78) $('#like-buttons').css({top: scrollTop + 47});
-            else $('#like-buttons').css({top: 125});
-        }).trigger('scroll');
+        if(window.location.protocol === 'file:') $('#addthis-toolbox').hide();
     </script>
 
     <!-- AddThis Button BEGIN -->

@@ -8,7 +8,7 @@
  * @license         This websanova wChar jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github          http://github.com/websanova/wChar
- * @version         Version 2.0.0
+ * @version         Version 2.1.0
  *
  ******************************************/
 
@@ -54,13 +54,13 @@
             }
 
             if (this.options.showMinCount && this.options.min > 0 && length < this.options.min) {
-                this.$char.html(length);
+                this.$char.html(length + (this.options.messageMin ? ' ' + this.options.messageMin : '') );
                 this.$char.addClass('wChar-min');
             }
             else {
                 if (charsLeft <= 0) { this.$char.addClass('wChar-min'); }
                 else { this.$char.removeClass('wChar-min'); }
-                this.$char.html(charsLeft);
+                this.$char.html(charsLeft + (this.options.message ? ' ' + this.options.message : '') );
             }
         },
 
@@ -161,7 +161,9 @@
         fadeIn: 500,              // bubble fade in speed
         fadeOut: 500,             // bubble fade out speed
         delayIn: 0,               // delay after start typing before bubble fades in
-        delayOut: 2000            // delay after stop typing before bubble fades out
+        delayOut: 2000,           // delay after stop typing before bubble fades out
+        message: '',              // if set will display a message along side max number of characters
+        messageMin: ''            // if set will display a message along side min number of characters
     };
     
 })(jQuery);

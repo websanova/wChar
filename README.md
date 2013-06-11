@@ -5,8 +5,10 @@ A jQuery plugin for `textarea`, `text` and `password` inputs to add a character 
 * [View the wChar demo](http://wchar.websanova.com)
 * [Download the lastest version of wChar](https://github.com/websanova/wChar/tags)
 
+
 ## Related Plugins
 
+* [wForm](http://wform.websanova.com) - See all the form plugins working together.
 * [wSelect](http://wselect.websanova.com) - Custom select boxes.
 * [wInput](http://winput.websanova.com) - Input plugin that handles backwards compatability for placeholders.
 * [wCheck](http://wcheck.websanova.com) - Radio and checkbox input plugin.
@@ -46,10 +48,23 @@ You can then apply the plugin to any input `text`, `password` and `textarea` ele
 $('input:text, input:password, textarea').wChar();
 ```
 
+### length
+
 Set the minlength and maxlength using data attributes `data-minlength` and `data-maxlength`.  Note that the minlength is optional and not required.  Also if you do not set a `maxlength` a default from the options will be used.
 
 ```html
 <input type="text" data-minlength="10" data-maxlength="100"/>
+```
+
+### message
+
+You can also optionally set a message a `min` and `max` message that will appear next to the character count while typing.  Where `message` is the number of characters remaining and `messageMin` is the minimum number of characters required.
+
+```js
+$('input:text, input:password, textarea').wChar({
+    message: 'left',
+    messageMin: 'to go'
+});
 ```
 
 

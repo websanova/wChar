@@ -9,10 +9,10 @@
  * Theme - classic
  ***********************************/
 .wChar-theme-classic.wChar {
-    width: 50px;
     height: 25px;
     line-height: 25px;
     margin: 2px;
+    padding: 0 10px;
     border: solid #99aaff 1px;
     color: #99aaff;
     border-radius: 5px;
