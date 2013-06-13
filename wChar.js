@@ -8,7 +8,7 @@
  * @license         This websanova wChar jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github          http://github.com/websanova/wChar
- * @version         Version 2.1.0
+ * @version         Version 2.1.1
  *
  ******************************************/
 

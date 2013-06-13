@@ -10,7 +10,7 @@
     "text",
     "forms"
   ],
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": {
     "name": "Websanova",
     "email": "rob@websanova.com",
@@ -30,7 +30,7 @@
     }
   ],
   "bugs": "https://github.com/websanova/wChar/issues",
-  "homepage": "http://winput.websanova.com",
+  "homepage": "http://wchar.websanova.com",
   "docs": "https://github.com/websanova/wChar#wcharjs",
   "download": "https://github.com/websanova/wChar/tags",
   "dependencies": {
