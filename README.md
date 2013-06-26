@@ -71,7 +71,7 @@ $('input:text, input:password, textarea').wChar({
 ## Resources
 
 * [More jQuery plugins by Websanova](http://websanova.com/plugins)
-* [jQuery Plugin Development Boilerplate](http://www.websanova.com/blog/jquery/jquery-plugin-development-boilerplate)
+* [jQuery Plugin Development Boilerplate](http://wboiler.websanova.com)
 * [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/blog/jquery/the-ultimate-guide-to-writing-jquery-plugins)
 
 
