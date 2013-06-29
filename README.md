@@ -30,6 +30,8 @@ $.fn.wChar.defaults = {
     fadeOut: 500,             // bubble fade out speed
     delayIn: 0,               // delay after start typing before bubble fades in
     delayOut: 2000            // delay after stop typing before bubble fades out
+    message: '',              // if set will display a message along side max number of characters
+    messageMin: ''            // if set will display a message along side min number of characters
 };
 ```
 
