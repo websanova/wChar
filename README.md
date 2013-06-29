@@ -67,6 +67,10 @@ $('input:text, input:password, textarea').wChar({
 });
 ```
 
+## Grunt.js
+
+If you want to use Grunt you will need to install the required plugins locally using `npm install` in the root folder of your project.  If you need to setup Grunt on your system you can follow my [Setting up Grunt.js](http://www.websanova.com/blog/javascript/how-to-setup-grunt) guide.
+
 
 ## Resources
 

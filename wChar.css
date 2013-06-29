@@ -13,27 +13,14 @@
     line-height: 25px;
     margin: 2px;
     padding: 0 10px;
-    border: solid #99aaff 1px;
-    color: #99aaff;
     border-radius: 5px;
-    text-align: center;
-    background-repeat: repeat-x;
-    background-color: #fff;
-    background-image: -moz-linear-gradient(top, #fff, #ececec);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ececec));
-    background-image: -webkit-linear-gradient(top, #fff, #ececec);
-    background-image: -o-linear-gradient(top, #fff, #ececec);
-    background-image: linear-gradient(to bottom, #fff, #ececec);
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    color: #FAFAFA;
+    background-color: #CACACA;
+    border: solid #FFF 1px;
 }
 .wChar-theme-classic.wChar-min {
-    border-color: #ffaaff;
-    color: #ffaaff;
-    background-image: -moz-linear-gradient(top, #fff, #ffddff);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ffddff));
-    background-image: -webkit-linear-gradient(top, #fff, #ffddff);
-    background-image: -o-linear-gradient(top, #fff, #ffddff);
-    background-image: linear-gradient(to bottom, #fff, #ffddff);
+    background-color: #C47451;
 }

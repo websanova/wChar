@@ -1,17 +1,3 @@
-/******************************************
- * Websanova.com
- *
- * Resources for web entrepreneurs
- *
- * @author          Websanova
- * @copyright       Copyright (c) 2012 Websanova.
- * @license         This websanova wChar jQuery plug-in is dual licensed under the MIT and GPL licenses.
- * @link            http://www.websanova.com
- * @github          http://github.com/websanova/wChar
- * @version         Version 2.1.1
- *
- ******************************************/
-
 (function($) {
     
     function Char(el, options) {
@@ -20,7 +6,7 @@
         this.timeout = null;
 
         this.generate();
-    };
+    }
     
     Char.prototype = {
         generate: function() {
@@ -66,9 +52,9 @@
 
         setTimeout: function() {
             var _self = this;
-            setTimeout(function(){ _self.$char.fadeIn(_self.options.fadeIn); }, _self.options.delayIn);
-            clearTimeout(this.timeout);
-            this.timeout = setTimeout(function(){ _self.$char.fadeOut(_self.options.fadeOut); }, _self.options.delayOut);
+            window.setTimeout(function(){ _self.$char.fadeIn(_self.options.fadeIn); }, _self.options.delayIn);
+            window.clearTimeout(this.timeout);
+            this.timeout = window.setTimeout(function(){ _self.$char.fadeOut(_self.options.fadeOut); }, _self.options.delayOut);
         },
 
         setTheme: function(theme) {
@@ -137,7 +123,7 @@
         function get(el) {
             var wChar = $.data(el, 'wChar');
             if (!wChar) {
-                var _options = jQuery.extend(true, {}, options);
+                var _options = $.extend(true, {}, options);
                 _options.min = $(el).attr('data-minlength') || _options.min;
                 _options.max = $(el).attr('data-maxlength') || _options.max;
 
