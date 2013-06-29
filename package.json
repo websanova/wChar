@@ -1,7 +1,7 @@
 {
   "name": "wChar",
   "title": "wChar Character Counter Plugin",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "A jQuery plugin for textarea, text and password inputs to add a character counter bubble that fades in while you type and fades out when you stop typing.",
   "main": "wChar.js",
   "repository": {
