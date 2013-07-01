@@ -13,7 +13,7 @@
     "email": "rob@websanova.com",
     "url": "http://websanova.com"
   },
-  "homepage" : "http://www.websanova.com",
+  "homepage" : "http://wchar.websanova.com",
   "license": "MIT, GPL",
   "dependencies": {
     "grunt-contrib-uglify": "",
