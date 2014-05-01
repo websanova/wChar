@@ -40,7 +40,7 @@
             }
 
             if (this.options.showMinCount && this.options.min > 0 && length < this.options.min) {
-                this.$char.html(length + (this.options.messageMin ? ' ' + this.options.messageMin : '') );
+                this.$char.html(this.options.min - length + (this.options.messageMin ? ' ' + this.options.messageMin : '') );
                 this.$char.addClass('wChar-min');
             }
             else {
